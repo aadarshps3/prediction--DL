@@ -1,0 +1,44 @@
+{% extends 'user_temp/user_home.html' %}
+{% load crispy_forms_filters %}
+{% block content %}
+<div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                Appointment status
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-stripped">
+                                    <thead>
+                                        <tr>
+                                            <th>Sl No.</th>
+                                            <th>Vaccination Centers</th>
+                                            <th>Date</th>
+                                            <th>Start Time</th>
+                                            <th>End Time</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for i in appointment %}
+                                        <tr>
+                                            <td>{{forloop.counter}}</td>
+                                            <td>{{i.schedule.center}}</td>
+                                            <td>{{i.schedule.date}}</td>
+                                            <td>{{i.schedule.start_time}}</td>
+                                            <td>{{i.schedule.end_time}}</td>
+                                            <td>
+                                                {% if i.status == 0 %}
+                                                <button type="button" class="btn btn-warning">Approval pending</button>
+                                                {% elif i.status == 1 %}
+                                                <button type="button" class="btn btn-success">Appointment Confirmed</button>
+                                                {% else %}
+                                                <button type="button" class="btn btn-danger">Rejected</button>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+{% endblock %}

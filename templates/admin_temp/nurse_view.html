@@ -1,0 +1,36 @@
+{% extends 'admin_temp/admin_home.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                Nurse Table
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-stripped">
+                                    <thead>
+                                        <tr>
+                                            <th>Sl No.</th>
+                                            <th>Name</th>
+                                            <th>Contact No.</th>
+                                            <th>Email</th>
+                                            <th>Address</th>
+                                            <th>Vaccine Center</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for n in nurse %}
+                                        <tr>
+                                            <td>{{forloop.counter}}</td>
+                                            <td>{{n.name}}</td>
+                                            <td>{{n.contact_no}}</td>
+                                            <td>{{n.email}}</td>
+                                            <td>{{n.address}}</td>
+                                            <td>{{n.center}}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+{% endblock %}

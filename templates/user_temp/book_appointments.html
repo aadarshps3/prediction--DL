@@ -1,0 +1,28 @@
+{% extends 'user_temp/user_home.html' %}
+{% load crispy_forms_filters %}
+{% block content %}
+<div class="col-xl-8">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-chart-area me-1"></i>
+                                        Center Register Form
+                                    </div>
+                                    <form method="post">
+                                        {% csrf_token %}
+                                    <div class="d-grid gap-3 p-4">
+                                            <label class="form-label">Vaccination Center</label>
+                                            <input required class="form-control" readonly value="{{schedule.center}}">
+                                        <label class="form-label">Date</label>
+                                        <input class="form-control" readonly value="{{schedule.date}}">
+                                        <label class="form-label">Start-time</label>
+                                        <input class="form-control" readonly value="{{schedule.start_time}}">
+                                        <label class="form-label">End-time</label>
+                                        <input class="form-control" readonly value="{{schedule.end_time}}">
+                                        <div class="d-grid gap-3 d-md-block">
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+{% endblock %}

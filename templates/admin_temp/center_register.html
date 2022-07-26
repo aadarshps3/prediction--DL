@@ -1,0 +1,21 @@
+{% extends 'admin_temp/admin_home.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="col-xl-8">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        Center Register Form
+                                    </div>
+                                    <form method="post">
+                                        {% csrf_token %}
+                                    <div class="d-grid gap-3 p-4">
+                                    {{login_form|crispy}}
+                                        {{center_form|crispy}}
+                                        <div class="d-grid gap-3 d-md-block">
+                                            <button type="submit" class="btn btn-primary">Register</button>
+                                        </div>
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+{% endblock %}

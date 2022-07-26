@@ -1,0 +1,34 @@
+{% extends 'nurse_temp/nurse_home.html' %}
+{% load crispy_forms_filters %}
+{% block content %}
+<div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                Vaccination Centers
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-stripped">
+                                    <thead>
+                                        <tr>
+                                            <th>Sl No.</th>
+                                            <th>Name</th>
+                                            <th>Place</th>
+                                            <th>Address</th>
+                                            <th>Contact No.</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for c in center %}
+                                        <tr>
+                                            <td>{{forloop.counter}}</td>
+                                            <td>{{c.name}}</td>
+                                            <td>{{c.place}}</td>
+                                            <td>{{c.address}}</td>
+                                            <td>{{c.contact_no}}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+{% endblock %}

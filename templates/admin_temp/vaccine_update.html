@@ -1,0 +1,21 @@
+{% extends 'admin_temp/admin_home.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="col-xl-8">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-chart-area me-1"></i>
+                                        Vaccine Update Form
+                                    </div>
+                                    <form method="post">
+                                        {% csrf_token %}
+                                    <div class="d-grid gap-3 p-4">
+                                        {{form|crispy}}
+                                        <div class="d-grid gap-3 d-md-block">
+                                            <button type="submit" class="btn btn-primary">submit</button>
+                                        </div>
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+{% endblock %}

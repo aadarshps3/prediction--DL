@@ -1,0 +1,43 @@
+{% extends 'admin_temp/admin_home.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                User Table
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-stripped">
+                                    <thead>
+                                        <tr>
+                                            <th>Sl No.</th>
+                                            <th>Name</th>
+                                            <th>Age</th>
+                                            <th>Gender</th>
+                                            <th>Contact No.</th>
+                                            <th>Address</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for u in user %}
+                                        <tr>
+                                            <td>{{forloop.counter}}</td>
+                                            <td>{{u.name}}</td>
+                                            <td>{{u.age}}</td>
+                                            <td>{{u.gender}}</td>
+                                            <td>{{u.contact_no}}</td>
+                                            <td>{{u.address}}</td>
+                                            <td>
+                                                <form action="{% url 'user_delete' u.id %}" method="post">
+                                                    {% csrf_token %}
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+{% endblock %}

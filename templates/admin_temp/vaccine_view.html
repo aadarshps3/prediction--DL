@@ -1,0 +1,39 @@
+{% extends 'admin_temp/admin_home.html' %}
+{% load crispy_forms_filters %}
+{% block content %}
+<div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                Vaccines
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-stripped">
+                                    <thead>
+                                        <tr>
+                                            <th>Sl No.</th>
+                                            <th>Vaccine Name</th>
+                                            <th>Description</th>
+                                            <th>Update</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for v in vaccine %}
+                                        <tr>
+                                            <td>{{forloop.counter}}</td>
+                                            <td>{{v.name}}</td>
+                                            <td>{{v.description}}</td>
+                                            <td><a class="btn btn-success" href="{% url 'vaccine_update' v.id %}" role="button">update</a></td>
+                                            <td>
+                                                <form action="{% url 'vaccine_delete' v.id %}" method="post">
+                                                    {% csrf_token %}
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+{% endblock %}

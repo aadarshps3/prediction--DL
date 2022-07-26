@@ -1,0 +1,36 @@
+{% extends 'user_temp/user_home.html' %}
+{% load crispy_forms_filters %}
+{% block content %}
+<div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                Schedule
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-stripped">
+                                    <thead>
+                                        <tr>
+                                            <th>Sl No.</th>
+                                            <th>Vaccination Centers</th>
+                                            <th>Date</th>
+                                            <th>Start Time</th>
+                                            <th>End Time</th>
+                                            <th>Book Appointment</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for s in schedule %}
+                                        <tr>
+                                            <td>{{forloop.counter}}</td>
+                                            <td>{{s.center}}</td>
+                                            <td>{{s.date}}</td>
+                                            <td>{{s.start_time}}</td>
+                                            <td>{{s.end_time}}</td>
+                                            <td><a class="btn btn-success" href="{% url 'book_appointment' s.id %}" role="button">Book Appointment</a></td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+{% endblock %}
